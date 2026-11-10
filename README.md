@@ -1,6 +1,8 @@
 # Ruang Teduh
 
-An Indonesian furniture storefront built in the previously empty `qualcom` repository. React + Vite, Express, TypeScript, Mongoose, and a MongoDB replica set. The current brand, nine products, prices, Jakarta shipping zone, and original SVG illustrations are **demo content**.
+An Indonesian furniture storefront built in the previously empty `qualcom` repository. React + Vite, Express, TypeScript, Mongoose, and a MongoDB replica set. The current brand, nine products, prices, Jakarta shipping zone, SVG illustrations, and generated studio imagery are **demo content**.
+
+The editorial redesign uses a white and beige palette, locally served Outfit typography, studio product images, and accessible GSAP motion. See [design notes and asset prompts](docs/DESIGN.md) for implementation details and the isolated local preview setup.
 
 ## Run locally
 

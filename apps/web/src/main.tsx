@@ -27,12 +27,16 @@ import {
   ChevronDown,
   Truck,
   ShieldCheck,
-  Leaf,
   LogOut,
 } from 'lucide-react';
 import { api, ApiError, money, paymentLabel, shippingLabel } from './api';
 import { Admin } from './pages-admin';
+import { Home as StorefrontHome } from './home';
+import { Card } from './product-card';
+import { productImage } from './product-image';
+import '@fontsource-variable/outfit';
 import './style.css';
+import './storefront.css';
 type CartItem = {
   sku: string;
   quantity: number;
@@ -125,18 +129,14 @@ function Logo() {
   const { config } = useStore();
   return (
     <Link to="/" className="logo" aria-label={config.brand + ', beranda'}>
-      <span className="logo-mark">
-        <Leaf size={22} strokeWidth={1.4} />
-      </span>
       <span>
         {config.brand === 'Ruang Teduh' ? (
           <>
-            ruang<span className="logo-light">teduh</span>
+            Ruang<span className="logo-light">.Teduh</span>
           </>
         ) : (
           config.brand
         )}
-        <small>RUANG UNTUK PULANG</small>
       </span>
     </Link>
   );
@@ -150,11 +150,13 @@ function Header() {
     <>
       <div className="announcement">
         {config.demo
-          ? 'Koleksi demo — produk, harga, dan ilustrasi untuk pengembangan'
-          : 'Pilihan untuk ruang istirahat Anda'}
-        <span>Dirancang untuk keseharian.</span>
+          ? 'Koleksi demo · Furnitur & kenyamanan untuk ruang Anda'
+          : 'Furnitur & kenyamanan untuk ruang Anda'}
+        <Link to="/katalog">
+          Temukan koleksi <ArrowRight size={12} />
+        </Link>
       </div>
-      <header>
+      <header className="site-header">
         <Logo />
         <nav className={menu ? 'open' : ''} aria-label="Navigasi utama">
           <NavLink to="/" end>
@@ -184,7 +186,7 @@ function Header() {
           <button
             className="icon mobile-only"
             onClick={() => setMenu(!menu)}
-            aria-label="Buka navigasi"
+            aria-label={menu ? 'Tutup navigasi' : 'Buka navigasi'}
             aria-expanded={menu}
           >
             {menu ? <X /> : <Menu />}
@@ -270,199 +272,9 @@ function Loading() {
     </div>
   );
 }
-function Card({ product: p }: { product: any }) {
-  return (
-    <article className="product-card">
-      <Link to={'/produk/' + p.slug} className="product-image">
-        <img src={p.image} alt={p.alt} loading="lazy" width="800" height="650" />
-        {p.available === 0 ? <span className="product-tag">Stok habis</span> : null}
-        <span className="card-arrow">
-          <ArrowUpRight size={19} />
-        </span>
-      </Link>
-      <div className="product-caption">
-        <div>
-          <small>{p.category}</small>
-          <Link to={'/produk/' + p.slug}>
-            <h3>{p.name}</h3>
-          </Link>
-          <p>{p.variants[0]?.label}</p>
-        </div>
-        <span className="product-price">
-          {p.variants.length > 1 && <small>Mulai</small>}
-          {money(p.price)}
-        </span>
-      </div>
-    </article>
-  );
-}
 function Home() {
-  const [products, setProducts] = useState<any[]>([]),
-    [error, setError] = useState('');
-  useEffect(() => {
-    api('/products')
-      .then((d) => setProducts(d.products.slice(0, 4)))
-      .catch((e) => setError(e.message));
-  }, []);
-  return (
-    <main>
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <span /> RUANG TEDUH, SETIAP HARI
-          </p>
-          <h1>
-            Untuk ruang
-            <br />
-            yang terasa
-            <br />
-            <em>rumah.</em>
-          </h1>
-          <p className="hero-description">
-            Dari tempat beristirahat hingga sudut favorit.
-            <br className="desktop" /> Temukan kasur, bantal, dan furnitur
-            <br className="desktop" /> yang pas untuk keseharian Anda.
-          </p>
-          <Link to="/katalog" className="button">
-            Jelajahi koleksi <ArrowUpRight size={19} />
-          </Link>
-          <div className="hero-note">
-            <span className="thin-line" />
-            Bahan, ukuran, dan detail yang berarti.
-          </div>
-        </div>
-        <div className="hero-art">
-          <img
-            src="/images/room.svg"
-            alt="Ilustrasi ruang tamu hangat dengan sofa krem, meja kayu, dan tanaman"
-            fetchPriority="high"
-            width="1000"
-            height="1050"
-          />
-          <div className="hero-label">
-            <span>01 — RUANG KELUARGA</span>
-            <strong>Sederhana. Hangat. Milik Anda.</strong>
-          </div>
-          <Link className="hero-product" to="/produk/sofa-rana">
-            <span>
-              Sofa Rana<small>Kain tenun · 210 cm</small>
-            </span>
-            <ArrowUpRight size={23} />
-          </Link>
-        </div>
-        <span className="hero-side">A LITTLE SPACE TO SLOW DOWN</span>
-      </section>
-      <div className="values-strip">
-        <span>
-          <Leaf size={21} /> Kenali bahan setiap pilihan
-        </span>
-        <span>
-          <Truck size={22} /> Cek ongkir sebelum membayar
-        </span>
-        <span>
-          <ShieldCheck size={21} /> Detail ukuran di setiap produk
-        </span>
-      </div>
-      <section className="section categories">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">MULAI DARI RUANG ANDA</p>
-            <h2>Setiap sudut, ada pilihannya.</h2>
-          </div>
-          <p>
-            Tiga koleksi untuk melengkapi
-            <br />
-            cara Anda beristirahat.
-          </p>
-        </div>
-        <div className="category-grid">
-          {[
-            ['kasur', 'Kasur', 'Tempat hari dimulai dan diakhiri.', 'mattress'],
-            ['bantal', 'Bantal', 'Pilih tinggi dan isi yang sesuai.', 'pillow'],
-            ['furnitur', 'Furnitur', 'Isi sudut dengan yang berarti.', 'chair'],
-          ].map(([slug, name, desc, img], i) => (
-            <Link to={'/katalog?category=' + slug} className={'category cat-' + slug} key={slug}>
-              <div className="cat-top">
-                <span>0{i + 1}</span>
-                <ArrowUpRight size={22} />
-              </div>
-              <img
-                src={'/images/' + img + '.svg'}
-                alt={'Ilustrasi ' + name}
-                width="800"
-                height="650"
-                loading="lazy"
-              />
-              <div className="cat-bottom">
-                <h3>{name}</h3>
-                <p>{desc}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section className="section featured">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">KENALI LEBIH DEKAT</p>
-            <h2>Pilihan untuk keseharian.</h2>
-          </div>
-          <Link to="/katalog" className="text-link">
-            Lihat semua produk <ArrowRight size={18} />
-          </Link>
-        </div>
-        <Message error={error} />
-        <div className="featured-grid">
-          {products.map((p) => (
-            <Card product={p} key={p.slug} />
-          ))}
-        </div>
-      </section>
-      <section className="collection">
-        <div className="collection-image">
-          <img
-            src="/images/chair.svg"
-            alt="Ilustrasi Kursi Laras berwarna oatmeal"
-            loading="lazy"
-            width="800"
-            height="650"
-          />
-          <span>THE SLOW LIVING EDIT / 01</span>
-        </div>
-        <div className="collection-copy">
-          <p className="eyebrow">SUDUT UNTUK DIRI SENDIRI</p>
-          <h2>
-            Duduk sebentar.
-            <br />
-            <em>Nikmati jedanya.</em>
-          </h2>
-          <p>
-            Kursi Laras memadukan rangka kayu dengan dudukan kain oatmeal. Ukuran 72 × 78 cm untuk
-            sudut baca atau ruang keluarga Anda.
-          </p>
-          <Link to="/produk/kursi-laras" className="text-link">
-            Kenali Kursi Laras <ArrowUpRight size={18} />
-          </Link>
-          <div className="spec-line">
-            <span>Kayu oak</span>
-            <span>Kain oatmeal</span>
-            <span>72 × 78 × 80 cm</span>
-          </div>
-        </div>
-      </section>
-      <section className="guide-banner">
-        <span className="eyebrow">UKUR DULU, PILIH KEMUDIAN</span>
-        <h2>
-          Ruang yang pas dimulai
-          <br />
-          dari ukuran yang tepat.
-        </h2>
-        <Link to="/panduan" className="text-link">
-          Baca panduan ukuran <ArrowRight size={18} />
-        </Link>
-      </section>
-    </main>
-  );
+  const { config } = useStore();
+  return <StorefrontHome brand={config.brand} />;
 }
 const facets: Record<string, [string, string, string[]][]> = {
   kasur: [
@@ -768,7 +580,7 @@ function Product() {
       <link rel="canonical" href={new URL('/produk/' + p.slug, window.location.origin).href} />
       <div className="detail-layout">
         <div className="detail-image">
-          <img src={v?.image || p.image} alt={p.alt} width="800" height="650" />
+          <img src={productImage(v?.image || p.image)} alt={p.alt} width="800" height="650" />
           {config.demo && <span>ILUSTRASI PRODUK DEMO</span>}
         </div>
         <div className="detail-copy">
@@ -883,7 +695,7 @@ function Cart() {
           <div>
             {cart.map((i) => (
               <article className="cart-row" key={i.sku}>
-                <img src={i.image} alt={i.name} width="150" height="125" />
+                <img src={productImage(i.image)} alt={i.name} width="150" height="125" />
                 <div>
                   <h3>{i.name}</h3>
                   <p>{i.label}</p>
@@ -1488,7 +1300,7 @@ function OrderDetail() {
           </div>
           {o.items.map((i: any) => (
             <div className="cart-row" key={i.sku}>
-              <img src={i.image} alt={i.name} />
+              <img src={productImage(i.image)} alt={i.name} />
               <div>
                 <h3>{i.name}</h3>
                 <p>

@@ -1,14 +1,14 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  color: #30372c;
-  background: #fffefa;
+  color: #12212a;
+  background: #ffffff;
   font-synthesis: none;
   font-weight: 400;
-  --olive: #48523b;
-  --ink: #30372c;
-  --cream: #f2f0e9;
-  --line: #dedfd5;
-  --muted: #5f6853;
+  --olive: #12212a;
+  --ink: #12212a;
+  --cream: #f4f2ef;
+  --line: #deded9;
+  --muted: #62696b;
 }
 * {
   box-sizing: border-box;
@@ -49,7 +49,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 2px solid #7b8b5b;
+  outline: 2px solid #966d45;
   outline-offset: 4px;
 }
 h1,
@@ -79,7 +79,7 @@ h3 {
 p {
   font-size: 14px;
   line-height: 1.85;
-  color: #5f6853;
+  color: #62696b;
 }
 em {
   font-weight: 400;
@@ -100,7 +100,7 @@ input,
 select,
 textarea {
   width: 100%;
-  border: 1px solid #d6d9ce;
+  border: 1px solid #d5d6d3;
   background: transparent;
   padding: 13px 14px;
   border-radius: 2px;
@@ -109,7 +109,7 @@ textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  color: #5f6853;
+  color: #62696b;
 }
 input[type='checkbox'],
 input[type='radio'] {
@@ -171,7 +171,7 @@ header {
   align-items: center;
   border-bottom: 1px solid var(--line);
   gap: 40px;
-  background: #fffefa;
+  background: #ffffff;
   position: relative;
   z-index: 10;
 }
@@ -179,7 +179,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #3b4530;
+  color: #12212a;
   white-space: nowrap;
   font-family: Georgia, serif;
   font-size: 28px;
@@ -187,7 +187,7 @@ header {
 }
 .logo-light {
   font-weight: 400;
-  color: #5f6853;
+  color: #62696b;
 }
 .logo small {
   display: block;
@@ -245,7 +245,7 @@ header nav a.active:after {
 }
 .bag span {
   font-size: 10px;
-  background: #eff1e9;
+  background: #f1eeea;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -298,7 +298,7 @@ header nav a.active:after {
   margin-bottom: 27px;
 }
 .hero h1 em {
-  color: #5f6853;
+  color: #62696b;
 }
 .hero-description {
   font-size: 13px;
@@ -312,7 +312,7 @@ header nav a.active:after {
   gap: 27px;
   border: 1px solid var(--olive);
   background: var(--olive);
-  color: #fffefa;
+  color: #ffffff;
   padding: 17px 24px;
   min-height: 50px;
   font-size: 12px;
@@ -320,15 +320,15 @@ header nav a.active:after {
   transition: background 0.2s;
 }
 .button:hover {
-  background: #35402a;
+  background: #30454c;
 }
 .button.secondary {
   background: transparent;
   color: var(--olive);
-  border-color: #c6cbba;
+  border-color: #c9ccca;
 }
 .button.secondary:hover {
-  background: #eff0e8;
+  background: #f1eeea;
 }
 .button.full {
   width: 100%;
@@ -340,7 +340,7 @@ header nav a.active:after {
   gap: 13px;
   margin-top: 47px;
   font-size: 10px;
-  color: #5f6853;
+  color: #62696b;
 }
 .thin-line {
   width: 27px;
@@ -362,7 +362,7 @@ header nav a.active:after {
   position: absolute;
   top: 36px;
   left: 34px;
-  color: #4d5144;
+  color: #62696b;
 }
 .hero-label span {
   font-size: 8px;
@@ -389,7 +389,7 @@ header nav a.active:after {
 }
 .hero-product small {
   display: block;
-  color: #5f6853;
+  color: #62696b;
   font-size: 9px;
   margin-top: 6px;
 }
@@ -401,7 +401,7 @@ header nav a.active:after {
   transform: rotate(180deg);
   font-size: 8px;
   letter-spacing: 2px;
-  color: #5f6853;
+  color: #62696b;
 }
 .values-strip {
   display: flex;
@@ -411,7 +411,7 @@ header nav a.active:after {
   min-height: 86px;
   border-bottom: 1px solid var(--line);
   font-size: 11px;
-  color: #5f6853;
+  color: #62696b;
 }
 .values-strip span {
   display: flex;
@@ -481,7 +481,7 @@ header nav a.active:after {
 .cat-top span {
   font-size: 10px;
   letter-spacing: 1px;
-  color: #5f6853;
+  color: #62696b;
 }
 .cat-bottom {
   padding: 2px 27px 25px;
@@ -561,7 +561,7 @@ header nav a.active:after {
   text-transform: uppercase;
   font-size: 8px;
   letter-spacing: 1.1px;
-  color: #5f6853;
+  color: #62696b;
 }
 .product-caption h3 {
   font-size: 14px;
@@ -604,7 +604,7 @@ header nav a.active:after {
   left: 35px;
   font-size: 8px;
   letter-spacing: 2px;
-  color: #5f6853;
+  color: #62696b;
 }
 .collection-copy {
   padding: 70px 16% 60px 13%;
@@ -628,7 +628,7 @@ header nav a.active:after {
   border-top: 1px solid #cbd1bb;
   padding-top: 20px;
   font-size: 9px;
-  color: #5f6853;
+  color: #62696b;
 }
 .spec-line span + span {
   border-left: 1px solid #cbd1bb;
@@ -647,7 +647,7 @@ header nav a.active:after {
 }
 footer {
   padding: 55px 6.7% 0;
-  background: #f2f1ea;
+  background: #f4f2ef;
   border-top: 1px solid var(--line);
 }
 .footer-top {
@@ -672,7 +672,7 @@ footer {
   display: table;
   font-size: 11px;
   margin-bottom: 13px;
-  color: #5f6853;
+  color: #62696b;
 }
 .footer-top .text-link {
   display: inline-flex !important;
@@ -680,10 +680,10 @@ footer {
 .footer-bottom {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #daddcf;
+  border-top: 1px solid #deded9;
   padding: 22px 0;
   font-size: 8px;
-  color: #5f6853;
+  color: #62696b;
   letter-spacing: 0.5px;
 }
 .page {
@@ -693,12 +693,12 @@ footer {
 .breadcrumb {
   display: flex;
   gap: 11px;
-  color: #5f6853;
+  color: #62696b;
   font-size: 10px;
   margin-bottom: 40px;
 }
 .breadcrumb span {
-  color: #5f6853;
+  color: #62696b;
 }
 .catalog-intro {
   display: flex;
@@ -712,7 +712,7 @@ footer {
 }
 .catalog-intro h1 span,
 .page-heading h1 > span {
-  color: #5f6853;
+  color: #62696b;
 }
 .catalog-intro .eyebrow {
   margin-bottom: 14px;
@@ -747,7 +747,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #5f6853;
+  color: #62696b;
 }
 .filters fieldset,
 .filter-dialog fieldset {
@@ -798,7 +798,7 @@ footer {
   font-size: 11px;
 }
 .search-field svg {
-  color: #5f6853;
+  color: #62696b;
 }
 .sort {
   display: flex;
@@ -807,7 +807,7 @@ footer {
   font-size: 10px;
   white-space: nowrap;
   margin: 0;
-  color: #5f6853;
+  color: #62696b;
 }
 .sort select {
   border: 0;
@@ -825,7 +825,7 @@ footer {
 .result-line p {
   font-size: 10px;
   margin: 0;
-  color: #5f6853;
+  color: #62696b;
 }
 .catalog-grid {
   display: grid;
@@ -867,7 +867,7 @@ footer {
   justify-content: center;
   gap: 15px;
   font-size: 12px;
-  color: #5f6853;
+  color: #62696b;
 }
 .loading > span {
   width: 18px;
@@ -888,7 +888,7 @@ footer {
 }
 .empty > svg {
   margin: 0 auto 25px;
-  color: #5f6853;
+  color: #62696b;
 }
 .empty h2 {
   font-size: 32px;
@@ -912,7 +912,7 @@ footer {
   display: flex;
   gap: 12px;
   align-items: center;
-  background: #35412d;
+  background: #30454c;
   color: #fafbf5;
   padding: 17px 24px;
   box-shadow: 0 6px 30px #1a25182a;
@@ -953,7 +953,7 @@ footer {
   left: 25px;
   font-size: 8px;
   letter-spacing: 2px;
-  color: #5f6853;
+  color: #62696b;
 }
 .detail-copy {
   padding: 20px 0;
@@ -987,7 +987,7 @@ footer {
   align-items: center;
   gap: 7px;
   font-size: 11px;
-  color: #5f6853;
+  color: #62696b;
   margin-bottom: 19px;
   min-height: 18px;
 }
@@ -1041,7 +1041,7 @@ dl > div {
   border-bottom: 1px solid #eceee5;
 }
 dt {
-  color: #5f6853;
+  color: #62696b;
 }
 dd {
   margin: 0;
@@ -1120,7 +1120,7 @@ dd {
 }
 .summary {
   padding: 30px;
-  background: #f2f3eb;
+  background: #f4f2ef;
   border: 1px solid #e6e8dd;
   position: sticky;
   top: 25px;
@@ -1150,7 +1150,7 @@ dd {
   display: block;
   max-width: 200px;
   font-size: 10px;
-  color: #5f6853;
+  color: #62696b;
   margin-top: 7px;
 }
 .summary .button {
@@ -1172,7 +1172,7 @@ dd {
   font-size: 30px;
 }
 .muted {
-  color: #5f6853;
+  color: #62696b;
   font-size: 12px;
 }
 .inline-actions {
@@ -1273,7 +1273,7 @@ dd {
   font-size: 13px;
 }
 .badge {
-  background: #edf0e5;
+  background: #f1eeea;
   padding: 9px 13px;
   font-size: 10px;
 }
@@ -1339,7 +1339,7 @@ dd {
 }
 .editor,
 .case-row {
-  background: #f3f3ec;
+  background: #f4f2ef;
   border: 1px solid var(--line);
   padding: 30px;
   margin: 25px 0;
@@ -1354,7 +1354,7 @@ dd {
   max-width: 410px;
   padding: 45px 25px 30px;
   color: var(--ink);
-  background: #fffefa;
+  background: #ffffff;
 }
 .filter-dialog::backdrop {
   background: #2e382d88;
@@ -1520,7 +1520,7 @@ dd {
     right: 0;
     flex-direction: column;
     padding: 23px 6%;
-    background: #fffefa;
+    background: #ffffff;
     box-shadow: 0 15px 20px #28332015;
     gap: 15px;
   }

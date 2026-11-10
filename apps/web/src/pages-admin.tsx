@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { Plus, RefreshCw } from 'lucide-react';
 import { useStore, Message } from './main';
 import { api, money, paymentLabel, shippingLabel } from './api';
+import { productImage } from './product-image';
 const permissions: Record<string, string> = {
   products: 'catalog',
   variants: 'catalog',
@@ -335,7 +336,7 @@ function AdminPanel() {
           {tab === 'products' &&
             data.products.map((p: any) => (
               <div className="admin-row" key={p.slug}>
-                <img src={p.image} alt={p.alt} />
+                <img src={productImage(p.image)} alt={p.alt} />
                 <div>
                   <h3>{p.name}</h3>
                   <p>
