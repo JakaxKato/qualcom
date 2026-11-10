@@ -9,7 +9,7 @@ From `/workspace/qualcom`:
 1. Run `npm run db:up`. It starts/restarts the local Docker MongoDB replica set and checks for a writable primary. Existing data is preserved.
 2. If a new database needs demo products, run `npm run seed`. This does not reset inventory or overwrite existing products.
 3. Start `NODE_USE_ENV_PROXY=1 npm run dev:demo` as a persistent process. API: port 3001; storefront: port 5173. Keep `APP_ORIGIN=http://localhost:5173` for internal testing.
-4. Start `NODE_USE_ENV_PROXY=1 NODE_ENV=test PAYMENT_PROVIDER=simulated npm run reconcile` as a separate persistent process.
+4. Start `NODE_USE_ENV_PROXY=1 npm run reconcile:demo` as a separate persistent process.
 5. Verify `curl -fsS http://localhost:5173/api/v1/health` and confirm `/api/v1/products` returns the seeded products. Do not treat a PID or port alone as readiness.
 
 Live processes do not survive snapshots. Restart them in future tasks. The simulated payment adapter is strictly for tests; use normal `npm run dev` and `npm run reconcile` with merchant sandbox settings for real integration tests. Preserve inherited proxy variables and CA trust.

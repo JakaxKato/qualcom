@@ -24,7 +24,7 @@ npm run dev:demo
 This explicitly sets `NODE_ENV=test` and `PAYMENT_PROVIDER=simulated`. The simulation endpoint exists only in this configuration and is rejected in production. The order screen provides a clearly labeled simulation action. To run the reconciliation worker in the same test mode in another terminal:
 
 ```sh
-NODE_ENV=test PAYMENT_PROVIDER=simulated npm run reconcile
+npm run reconcile:demo
 ```
 
 For normal sandbox operation use `npm run reconcile`. Add `-- --once` to the API workspace command to process one batch: `npm run reconcile -w apps/api -- --once`.
