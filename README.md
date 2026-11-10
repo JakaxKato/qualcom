@@ -13,6 +13,24 @@ npm run seed
 npm run dev
 ```
 
+### Windows / PowerShell
+
+The npm commands work directly in PowerShell. Install Node.js and Docker Desktop on Windows, and start Docker Desktop in **Linux containers** mode before running `npm run db:up`. WSL is optional for this workflow. The database command uses Node.js rather than Bash, and demo/test environment variables are set using `cross-env`.
+
+To update an existing clone after the Windows compatibility fix:
+
+```powershell
+git pull --ff-only
+npm ci
+npm run db:up
+npm run seed
+npm run dev:demo
+```
+
+In a second terminal, run `npm run reconcile:demo`. If needed, create local configuration with `Copy-Item .env.example .env` before starting the app; preserve an existing `.env`.
+
+Older versions used a Bash script that could fail with `set: pipefail: invalid option name` after a Windows CRLF checkout. The new command avoids Bash, and `.gitattributes` keeps remaining shell scripts in LF format. If Docker is missing, not running, or configured for Windows containers, the startup command now reports the specific prerequisite.
+
 The web server uses port 5173 and proxies `/api/v1` to the API on port 3001. Use `localhost` as the hostname to match the default `APP_ORIGIN`. MongoDB is bound only to loopback on port 27017. `db:up` starts a single-node replica set and waits for an elected primary. This unauthenticated local database is for development only.
 
 `npm run dev` leaves payment creation disabled. For a fully interactive **test checkout with no real payment**, run:
